@@ -25,8 +25,21 @@ export class TodoService extends Init{
   
   deleteTodo(todoText){
     var todos = JSON.parse(localStorage.getItem('todos'));  
-    todos.splice(todoText, 1)
+    todos.splice(todoText, 1);
     
     localStorage.setItem('todos', JSON.stringify(todos));
   }
+  
+    updateTodo(oldText, newText){
+    var todos = JSON.parse(localStorage.getItem('todos'));  
+    
+    for( var i=0; i < todos.length; i++ ){
+      if( todos[i].text == oldText ){
+        todos[i].text = newText;
+      }
+    }
+    
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }
+  
 }
